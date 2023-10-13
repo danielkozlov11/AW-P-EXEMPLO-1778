@@ -1,12 +1,1 @@
-{
-    "students": [
-        {
-            "number": "1778",
-            "name": "Marcelo Filipe",
-            "city": "Braga",
-            "birthday": "17-09-1991"
-        }
-    ],
-    "schools": [],
-    "courses": []
-}
+{"students":[{"number":"1778","name":"Marcelo Filipe","city":"Braga","birthday":"17-09-1991"},{"number":"1778","name":"Marcelo F","city":"Braga","birthday":"17-09-1991"}],"schools":[{"name":"Escola Secundaria Eca de Queiros","city":"Povoa de Varzim","country":"Portugal"},{"id":"1778","name":"Marcelo F","sigla":"Braga","morada":"vsbvjshb","website":"www.esec-eca-queiros.pt"}],"courses":[{"name":"Informatica","school":"Escola Secundaria Eca de Queiros"}]}

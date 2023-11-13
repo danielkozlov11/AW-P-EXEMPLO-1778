@@ -33,3 +33,12 @@ model Schools {
     morada String
     website String
 }
+
+
+model users{ // this is the user model
+  id String @id @default(uuid())
+  name String @db.VarChar(255)
+  email String @unique
+  password String 
+  isAdmin Boolean @default(false)
+}

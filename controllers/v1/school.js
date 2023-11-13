@@ -3,16 +3,27 @@ const fs = require('fs');
 exports.create = async (req, res) => {
     //get requested student properties
     const {id, name, sigla, morada,website } = req.body;
+    if(!id || !name || !sigla || !morada || !website){
+        return res.status(400).send("Missing properties");
+    }
+
     //read local data json file
     const datajson = fs.readFileSync("data/local/data.json", "utf-8"); 
     //parse to json
     const data = JSON.parse(datajson);
+    if(data.schools.find(school => school.id == id)){
+        return res.status(400).send("School already exists");
+    }
     //add to students array
     data.schools.push(req.body);
-    //add to students array
-    fs.writeFileSync('data/local/data.json', JSON.stringify(data));
-    //return new student
-    return res.status(201).send(req.body);
+    try {
+        fs.writeFileSync("data/local/data.json", JSON.stringify(data));
+      } catch {
+        return res.status(400).send("Erro!");
+      } finally {
+        //return new course
+        return res.status(201).send(req.body);
+      }
 }
 
 //updates school
@@ -32,7 +43,7 @@ exports.update = async (req, res) => {
     //update local database
     fs.writeFileSync('data/local/data.json', JSON.stringify(data));
     //return updated school
-    return res.send({id, name, sigla, school });
+    return res.send({id, name, sigla, morada, website});
 }
 
 //delete school by his id (school number)
